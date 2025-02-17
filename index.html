@@ -7,17 +7,31 @@
     <script>
       // 1 = rock, 2 = paper, 3 = scissors
       let player = 0;
-      let computer = 2;
+      let computer = 1;
       player = prompt("Enter 1 for rock, 2 for paper, or 3 for scissors");
-      // alert(`You chose ${player}`);
       if (player == 1) {
-        alert("You chose rock");
+        alert("You chose ✊🏽");
       } else if (player == 2) {
-        alert("You chose paper");
+        alert("You chose ✋🏽");
       } else if (player == 3) {
-        alert("You chose scissors");
+        alert("You chose ✌🏽");
       } else {
         alert("Invalid choice");
+      }
+      if (computer == 1) {
+        alert("Computer chose ✊🏽");
+      } else if (computer == 2) {
+        alert("Computer chose ✋🏽");
+      } else if (computer == 3) {
+        alert("Computer chose ✌🏽");
+      }
+      // Combat
+      if (player == computer) {
+        alert("It's a tie!");
+      } else if (player - computer == 1 || player - computer == -2) {
+        alert("You win!");
+      } else {
+        alert("You lose!");
       }
     </script>
   </head>
