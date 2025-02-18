@@ -7,13 +7,14 @@ function selectPlayerMokepon() {
   let inputCharmander = document.getElementById("charmander");
   let inputSquirtle = document.getElementById("squirtle");
   let inputBulbasaur = document.getElementById("bulbasaur");
+  let spanPlayerMokepon = document.getElementById("player-mokepon");
 
   if (inputCharmander.checked) {
-    alert("You selected Charmander!");
+    spanPlayerMokepon.innerHTML = "Charmander";
   } else if (inputSquirtle.checked) {
-    alert("You selected Squirtle!");
+    spanPlayerMokepon.innerHTML = "Squirtle";
   } else if (inputBulbasaur.checked) {
-    alert("You selected Bulbasaur!");
+    spanPlayerMokepon.innerHTML = "Bulbasaur";
   } else {
     alert("Please select a Mokepon!");
   }
