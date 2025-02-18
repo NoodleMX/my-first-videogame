@@ -1,4 +1,5 @@
 let playerAttack = 0;
+let enemyAttack = 0;
 
 function startGame() {
   const selectMokeponButton = document.getElementById("select-mokepon-button");
@@ -46,17 +47,29 @@ function selectEnemyMokepon() {
 
 function fireAttack() {
   playerAttack = "Fire🔥";
-  alert(playerAttack);
+  selectEnemyAttack();
 }
 
 function waterAttack() {
   playerAttack = "Water💧";
-  alert(playerAttack);
+  selectEnemyAttack();
 }
 
 function grassAttack() {
   playerAttack = "Grass🌱";
-  alert(playerAttack);
+  selectEnemyAttack();
+}
+
+function selectEnemyAttack() {
+  const randomNumber = generateRandomNumber(1, 3);
+
+  if (randomNumber === 1) {
+    enemyAttack = "Fire🔥";
+  } else if (randomNumber === 2) {
+    enemyAttack = "Water💧";
+  } else {
+    enemyAttack = "Grass🌱";
+  }
 }
 
 // Function to generate a random number between min and max
