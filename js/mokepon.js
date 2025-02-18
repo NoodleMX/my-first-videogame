@@ -1,13 +1,23 @@
+let playerAttack = 0;
+
 function startGame() {
   const selectMokeponButton = document.getElementById("select-mokepon-button");
   selectMokeponButton.addEventListener("click", selectPlayerMokepon);
+
+  const buttonFire = document.getElementById("fire-button");
+  const buttonWater = document.getElementById("water-button");
+  const buttonGrass = document.getElementById("grass-button");
+
+  buttonFire.addEventListener("click", fireAttack);
+  buttonWater.addEventListener("click", waterAttack);
+  buttonGrass.addEventListener("click", grassAttack);
 }
 
 function selectPlayerMokepon() {
-  let inputCharmander = document.getElementById("charmander");
-  let inputSquirtle = document.getElementById("squirtle");
-  let inputBulbasaur = document.getElementById("bulbasaur");
-  let spanPlayerMokepon = document.getElementById("player-mokepon");
+  const inputCharmander = document.getElementById("charmander");
+  const inputSquirtle = document.getElementById("squirtle");
+  const inputBulbasaur = document.getElementById("bulbasaur");
+  const spanPlayerMokepon = document.getElementById("player-mokepon");
 
   if (inputCharmander.checked) {
     spanPlayerMokepon.innerHTML = "Charmander";
@@ -22,8 +32,8 @@ function selectPlayerMokepon() {
 }
 
 function selectEnemyMokepon() {
-  let enemyMokepon = generateRandomNumber(1, 3);
-  let spanEnemyMokepon = document.getElementById("enemy-mokepon");
+  const enemyMokepon = generateRandomNumber(1, 3);
+  const spanEnemyMokepon = document.getElementById("enemy-mokepon");
 
   if (enemyMokepon === 1) {
     spanEnemyMokepon.innerHTML = "Charmander";
@@ -32,6 +42,21 @@ function selectEnemyMokepon() {
   } else if (enemyMokepon === 3) {
     spanEnemyMokepon.innerHTML = "Bulbasaur";
   }
+}
+
+function fireAttack() {
+  playerAttack = "Fire🔥";
+  alert(playerAttack);
+}
+
+function waterAttack() {
+  playerAttack = "Water💧";
+  alert(playerAttack);
+}
+
+function grassAttack() {
+  playerAttack = "Grass🌱";
+  alert(playerAttack);
 }
 
 // Function to generate a random number between min and max
