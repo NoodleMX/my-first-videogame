@@ -70,8 +70,17 @@ function selectEnemyAttack() {
   } else {
     enemyAttack = "Grass🌱";
   }
+
+  createAttackMessage();
 }
 
+function createAttackMessage() {
+  const sectionBattle = document.getElementById("battle");
+  const message = document.createElement("p");
+
+  message.innerHTML = `Your Mokepon used ${playerAttack}. Enemy Mokepon used ${enemyAttack}`;
+  sectionBattle.appendChild(message);
+}
 // Function to generate a random number between min and max
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
