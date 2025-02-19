@@ -77,32 +77,50 @@ function selectEnemyAttack() {
 }
 
 function combat() {
-  let result = "";
+  let combatResult = "";
   const spanPlayerLifes = document.getElementById("player-lifes");
   const spanEnemyLifes = document.getElementById("enemy-lifes");
 
   if (playerAttack === enemyAttack) {
-    result = "It's a tie!";
+    combatResult = "It's a tie!";
   } else if ((playerAttack === "Fire🔥" && enemyAttack === "Grass🌱") || (playerAttack === "Water💧" && enemyAttack === "Fire🔥") || (playerAttack === "Grass🌱" && enemyAttack === "Water💧")) {
-    result = "You win!";
+    combatResult = "You win!";
     enemyLifes--;
     spanEnemyLifes.innerHTML = enemyLifes;
   } else {
-    result = "You lose!";
+    combatResult = "You lose!";
     playerLifes--;
     spanPlayerLifes.innerHTML = playerLifes;
   }
 
-  createAttackMessage(result);
+  createAttackMessage(combatResult);
+  checkLifes();
 }
 
-function createAttackMessage(result) {
+function checkLifes() {
+  if (playerLifes === 0) {
+    createResultMessage("Game Over! You lost all your lifes!");
+  } else if (enemyLifes === 0) {
+    createResultMessage("Congratulations! You won the game!");
+  }
+}
+
+function createAttackMessage(combatResult) {
   const sectionBattle = document.getElementById("battle");
   const message = document.createElement("p");
 
-  message.innerHTML = `Your Mokepon used ${playerAttack}. Enemy Mokepon used ${enemyAttack}. ${result}`;
+  message.innerHTML = `Your Mokepon used ${playerAttack}. Enemy Mokepon used ${enemyAttack}. ${combatResult}`;
   sectionBattle.appendChild(message);
 }
+
+function createResultMessage(gameResult) {
+  const sectionBattle = document.getElementById("battle");
+  const message = document.createElement("p");
+
+  message.innerHTML = gameResult;
+  sectionBattle.appendChild(message);
+}
+
 // Function to generate a random number between min and max
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
