@@ -1,5 +1,7 @@
 let playerAttack = 0;
 let enemyAttack = 0;
+let playerLifes = 3;
+let enemyLifes = 3;
 
 function startGame() {
   const selectMokeponButton = document.getElementById("select-mokepon-button");
@@ -76,13 +78,19 @@ function selectEnemyAttack() {
 
 function combat() {
   let result = "";
+  const spanPlayerLifes = document.getElementById("player-lifes");
+  const spanEnemyLifes = document.getElementById("enemy-lifes");
 
   if (playerAttack === enemyAttack) {
     result = "It's a tie!";
   } else if ((playerAttack === "Fire🔥" && enemyAttack === "Grass🌱") || (playerAttack === "Water💧" && enemyAttack === "Fire🔥") || (playerAttack === "Grass🌱" && enemyAttack === "Water💧")) {
     result = "You win!";
+    enemyLifes--;
+    spanEnemyLifes.innerHTML = enemyLifes;
   } else {
     result = "You lose!";
+    playerLifes--;
+    spanPlayerLifes.innerHTML = playerLifes;
   }
 
   createAttackMessage(result);
