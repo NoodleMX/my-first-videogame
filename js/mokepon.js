@@ -10,10 +10,12 @@ function startGame() {
   const buttonFire = document.getElementById("fire-button");
   const buttonWater = document.getElementById("water-button");
   const buttonGrass = document.getElementById("grass-button");
+  const buttonReset = document.getElementById("reset-button");
 
   buttonFire.addEventListener("click", fireAttack);
   buttonWater.addEventListener("click", waterAttack);
   buttonGrass.addEventListener("click", grassAttack);
+  buttonReset.addEventListener("click", resetGame);
 }
 
 function selectPlayerMokepon() {
@@ -116,9 +118,20 @@ function createAttackMessage(combatResult) {
 function createResultMessage(gameResult) {
   const sectionBattle = document.getElementById("battle");
   const message = document.createElement("p");
+  const buttonFire = document.getElementById("fire-button");
+  const buttonWater = document.getElementById("water-button");
+  const buttonGrass = document.getElementById("grass-button");
+
+  buttonFire.disabled = true;
+  buttonWater.disabled = true;
+  buttonGrass.disabled = true;
 
   message.innerHTML = gameResult;
   sectionBattle.appendChild(message);
+}
+
+function resetGame() {
+  location.reload();
 }
 
 // Function to generate a random number between min and max
