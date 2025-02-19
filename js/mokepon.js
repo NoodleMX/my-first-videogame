@@ -4,14 +4,17 @@ let playerLifes = 3;
 let enemyLifes = 3;
 
 function startGame() {
+  const sectionSelectAttack = document.getElementById("select-attack");
+  const sectionReset = document.getElementById("reset");
   const selectMokeponButton = document.getElementById("select-mokepon-button");
-  selectMokeponButton.addEventListener("click", selectPlayerMokepon);
-
   const buttonFire = document.getElementById("fire-button");
   const buttonWater = document.getElementById("water-button");
   const buttonGrass = document.getElementById("grass-button");
   const buttonReset = document.getElementById("reset-button");
 
+  sectionSelectAttack.style.display = "none";
+  sectionReset.style.display = "none";
+  selectMokeponButton.addEventListener("click", selectPlayerMokepon);
   buttonFire.addEventListener("click", fireAttack);
   buttonWater.addEventListener("click", waterAttack);
   buttonGrass.addEventListener("click", grassAttack);
@@ -19,10 +22,15 @@ function startGame() {
 }
 
 function selectPlayerMokepon() {
+  const sectionSelectAttack = document.getElementById("select-attack");
+  const sectionSelectMokepon = document.getElementById("select-mokepon");
   const inputCharmander = document.getElementById("charmander");
   const inputSquirtle = document.getElementById("squirtle");
   const inputBulbasaur = document.getElementById("bulbasaur");
   const spanPlayerMokepon = document.getElementById("player-mokepon");
+
+  sectionSelectMokepon.style.display = "none";
+  sectionSelectAttack.style.display = "block";
 
   if (inputCharmander.checked) {
     spanPlayerMokepon.innerHTML = "Charmander";
@@ -128,6 +136,9 @@ function createResultMessage(gameResult) {
 
   message.innerHTML = gameResult;
   sectionBattle.appendChild(message);
+
+  const sectionReset = document.getElementById("reset");
+  sectionReset.style.display = "block";
 }
 
 function resetGame() {
