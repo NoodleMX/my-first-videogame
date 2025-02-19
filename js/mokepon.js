@@ -71,14 +71,28 @@ function selectEnemyAttack() {
     enemyAttack = "Grass🌱";
   }
 
-  createAttackMessage();
+  combat();
 }
 
-function createAttackMessage() {
+function combat() {
+  let result = "";
+
+  if (playerAttack === enemyAttack) {
+    result = "It's a tie!";
+  } else if ((playerAttack === "Fire🔥" && enemyAttack === "Grass🌱") || (playerAttack === "Water💧" && enemyAttack === "Fire🔥") || (playerAttack === "Grass🌱" && enemyAttack === "Water💧")) {
+    result = "You win!";
+  } else {
+    result = "You lose!";
+  }
+
+  createAttackMessage(result);
+}
+
+function createAttackMessage(result) {
   const sectionBattle = document.getElementById("battle");
   const message = document.createElement("p");
 
-  message.innerHTML = `Your Mokepon used ${playerAttack}. Enemy Mokepon used ${enemyAttack}`;
+  message.innerHTML = `Your Mokepon used ${playerAttack}. Enemy Mokepon used ${enemyAttack}. ${result}`;
   sectionBattle.appendChild(message);
 }
 // Function to generate a random number between min and max
